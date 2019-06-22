@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import {SimpleServiceService} from './simple-service.service';
+
+
+
 
 @Component({
   selector: 'app-root',
@@ -14,6 +18,14 @@ export class AppComponent {
   months = ["Jan", "Feb", "Mar", "April", "May", "Jun",
              "July", "Aug", "Sept", "Oct", "Nov", "Dec"];
   numberPower = 5;
+  sumFromService = 0;
+
+
+  constructor(simpleservice : SimpleServiceService) {
+    this.sumFromService = simpleservice.calculatesum(4,5);
+    simpleservice.callGetService();
+  }
+
 
   calculateSum(a,b) {
     this.result = a+b;
